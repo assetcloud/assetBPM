@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/java" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="main44" />
+    <orderEntry type="module" module-name="main89" />
+    <orderEntry type="module" module-name="main84" />
+    <orderEntry type="module" module-name="main106" />
+    <orderEntry type="module" module-name="main119" />
+    <orderEntry type="module" module-name="main114" />
+    <orderEntry type="module" module-name="main13" />
+    <orderEntry type="module" module-name="test57" />
+    <orderEntry type="module" module-name="main101" />
+    <orderEntry type="module" module-name="main20" />
+    <orderEntry type="module" module-name="main61" />
+    <orderEntry type="module" module-name="main2" />
+    <orderEntry type="module" module-name="test22" />
+    <orderEntry type="module" module-name="main27" />
+    <orderEntry type="module" module-name="main109" />
+    <orderEntry type="module" module-name="main23" />
+    <orderEntry type="module" module-name="main99" />
+    <orderEntry type="module" module-name="main86" />
+  </component>
+</module>

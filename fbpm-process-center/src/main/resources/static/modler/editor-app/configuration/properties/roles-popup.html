@@ -1,0 +1,93 @@
+<div class="modal" ng-controller="FlowableRolePopupCtrl">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="close()">&times;</button>
+                <h2 translate>角色</h2>
+            </div>
+            <div class="content_wrap" style="margin-top:20px;">
+            	<div class="left1">
+            		<ul id="roleZtree" class="ztree"></ul>
+			    </div>
+			    <div class="middle1">
+			    	<div style="height:380px;display:block">
+		    			<span onclick="gplus();" class="glyphicon glyphicon-plus"></span>
+	          			<span id="gminus" class="glyphicon glyphicon-minus"></span>
+	          			<input id="froleids" name="froleids" type="hidden" ng-model="froleids"/>
+	          			<input id="frolenames" name="frolenames" type="hidden"  ng-model="frolenames"/>
+	          			<input id="lirolenames" name="lirolenames" type="hidden" />
+			        </div>
+			    </div>
+			    <div class="right1">
+			    	<ul id="resultsZtree" class="ztree">
+			       	</ul>
+			    </div>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="save()" class="btn btn-primary" translate>确定</button>
+                <button ng-click="close()" class="btn btn-primary" translate>取消</button>
+            </div>
+        </div>
+    </div>
+<!-- ztree树的初始化 -->
+<script type="text/javascript">
+	var setting = {
+		check: {
+            enable: true
+        },view: {
+			dblClickExpand: dblClickExpand
+		},data: {
+			simpleData: {
+				enable: true
+			}
+		},callback:{
+			onCheck:zTreeOnClick
+		}
+	};
+	var zNodes;
+	function dblClickExpand(treeId, treeNode) {
+		return treeNode.level > 0;
+	}
+	function zTreeOnClick(event, treeId, treeNode) {
+        var treeObj = jQuery.fn.zTree.getZTreeObj("roleZtree");
+        nodes = treeObj.getCheckedNodes(true);
+        var v1 = "";//id
+    	var v2 = "";//name
+    	var v3 = "<li style='height:30px;'>名称</li>";//li
+        for (var i = 0; i < nodes.length; i++) {
+        	if(i==(nodes.length-1)) {
+        		v1 = v1 + nodes[i].id;
+        		v2 = v2 + nodes[i].name;
+        	}else {
+        		v1 = v1 + nodes[i].id + ",";
+                v2 = v2 + nodes[i].name + ",";
+        	}
+            v3 = v3 +"<li style='height:25px;'>"+ nodes[i].name + "</li>";
+        }
+        jQuery('#froleids').val(v1);
+		jQuery('#frolenames').val(v2);
+		jQuery('#lirolenames').val(v3);
+    }
+	function gplus() {
+		jQuery('#resultsZtree').html("");
+		jQuery('#resultsZtree').append(jQuery('#lirolenames').val());
+	}
+	jQuery(document).ready(function(){
+		jQuery.ajax({
+			url:"/permission/api/role?fetchProperties=id,name",
+			type:"get",
+			dataType: "json",
+			success: function(data){
+				console.log(data);
+				if(data!=null&&data!="") {
+					zNodes = data;
+					jQuery.fn.zTree.init(jQuery("#roleZtree"),setting, zNodes);
+				}
+			},
+			error: function(){
+
+			}
+		});
+		jQuery('#resultsZtree').append("<li style='height:30px;'>名称</li>");
+	});
+</script>

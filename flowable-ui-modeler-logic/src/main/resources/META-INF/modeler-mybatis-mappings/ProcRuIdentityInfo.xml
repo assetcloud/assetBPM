@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.flowable.ui.modeler.domain.ProcRuIdentityInfo">
+
+    <resultMap id="procNodeInfoResultMap" type="org.flowable.ui.modeler.domain.ProcRuIdentityInfo">
+        <id property="id" column="id" jdbcType="INTEGER" />
+        <result property="taskId" column="task_id" jdbcType="VARCHAR" />
+        <result property="procDefId" column="proc_def_id" jdbcType="VARCHAR" />
+        <result property="procDefKey" column="proc_def_key" jdbcType="VARCHAR" />
+        <result property="businessKey" column="business_key" jdbcType="VARCHAR" />
+        <result property="actId" column="act_id" jdbcType="VARCHAR" />
+        <result property="identityType" column="identity_type" jdbcType="VARCHAR" />
+        <result property="identityId" column="identity_id" jdbcType="VARCHAR" />
+        <result property="userId" column="user_id" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <insert id="insertProcNodeInfo" parameterType="org.flowable.ui.modeler.domain.ProcRuIdentityInfo">
+        insert into act_proc_ru_identity (
+            id,
+            task_id,
+            proc_def_id,
+            proc_def_key,
+            business_key,
+            act_id,
+            identity_type,
+            identity_id,
+            user_id)
+         values (
+            #{id,jdbcType=INTEGER},
+            #{taskId,jdbcType=VARCHAR},
+            #{procDefId,jdbcType=VARCHAR},
+            #{procDefKey,jdbcType=VARCHAR},
+            #{businessKey,jdbcType=VARCHAR},
+            #{actId,jdbcType=VARCHAR},
+            #{identityType,jdbcType=VARCHAR},
+		    #{identityId,jdbcType=VARCHAR},
+		    #{userId,jdbcType=VARCHAR}
+          )
+    </insert>
+
+    <update id="updateProcNodeInfo" parameterType="org.flowable.ui.modeler.domain.ProcRuIdentityInfo">
+        update act_proc_ru_identity
+        <set>
+            task_id = #{taskId,jdbcType=VARCHAR},
+            proc_def_id = #{procDefId,jdbcType=VARCHAR},
+            proc_def_key = #{procDefKey,jdbcType=VARCHAR},
+            business_key = #{businessKey,jdbcType=VARCHAR},
+            act_id = #{actId,jdbcType=VARCHAR},
+            identity_type = #{identityType,jdbcType=VARCHAR},
+            identity_id = #{identityId,jdbcType=VARCHAR},
+            user_id = #{userId,jdbcType=VARCHAR}
+        </set>
+        where id = #{id, jdbcType=INTEGER}
+    </update>
+
+    <select id="findNodePreemptModeProcDefIdAndActId" parameterType="map" resultMap="procNodeInfoResultMap">
+        select * from act_proc_ru_identity
+        where
+          proc_def_id = #{procDefId,jdbcType=VARCHAR}
+        and
+          act_id = #{actId,jdbcType=VARCHAR}
+    </select>
+
+    <select id="findNodePreemptModeProcDefKeyAndActId" parameterType="map" resultMap="procNodeInfoResultMap">
+        select * from act_proc_ru_identity
+        where
+          proc_def_key = #{procDefKey,jdbcType=VARCHAR}
+        and
+          act_id = #{actId,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteProcNodeInfo" parameterType="org.flowable.ui.modeler.domain.ProcRuIdentityInfo">
+        delete from act_proc_ru_identity where id = #{id, jdbcType=INTEGER}
+    </delete>
+</mapper>
