@@ -33,7 +33,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
@@ -44,8 +43,7 @@ import java.util.Collections;
  * @author Frederik Heremans
  */
 @RestController
-@RequestMapping("/workflow/api")
-@Api(tags = { "Process Instances" }, description = "流程实例", authorizations = { @Authorization(value = "basicAuth") })
+@Api(tags = { "Process Instances" }, description = "Manage Process Instances", authorizations = { @Authorization(value = "basicAuth") })
 public class ProcessInstanceDiagramResource extends BaseProcessInstanceResource {
 
     @Autowired

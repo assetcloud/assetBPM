@@ -22,7 +22,6 @@ import io.swagger.annotations.Authorization;
 import org.flowable.task.api.Task;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,8 +31,7 @@ import java.util.List;
  * @author Tijs Rademakers
  */
 @RestController
-@RequestMapping("/workflow/api")
-@Api(tags = { "Tasks" }, description = "子流程任务", authorizations = { @Authorization(value = "basicAuth") })
+@Api(tags = { "Tasks" }, description = "Manage Tasks", authorizations = { @Authorization(value = "basicAuth") })
 public class TaskSubTaskCollectionResource extends TaskBaseResource {
 
     @ApiOperation(value = "List of sub tasks for a task", nickname="listTaskSubtasks", tags = { "Tasks" })

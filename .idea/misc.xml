@@ -6,15 +6,9 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/flowable-rest/pom.xml" />
-        <option value="$PROJECT_DIR$/flowable-rest-ext/pom.xml" />
         <option value="$PROJECT_DIR$/flowable-ui-modeler-logic/pom.xml" />
         <option value="$PROJECT_DIR$/flowable-ui-modeler-rest/pom.xml" />
       </list>
-    </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/fbpm-process-center/pom.xml" />
-      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">

@@ -14,7 +14,6 @@
         <result property="physicsChildId" column="physics_child_id" jdbcType="VARCHAR" />
         <result property="createTime" column="create_time" jdbcType="DATE" />
         <result property="isMultiinstance" column="is_multiinstance" jdbcType="VARCHAR" />
-        <result property="isPreemptMode" column="is_preempt_mode" jdbcType="VARCHAR" />
     </resultMap>
 
     <insert id="insertProcNodeInfo" parameterType="org.flowable.ui.modeler.domain.ProcNodeInfo">
@@ -27,8 +26,7 @@
             logic_child_id,
             physics_child_id,
             create_time,
-            is_multiinstance,
-            is_preempt_mode)
+            is_multiinstance)
          values (
             #{id,jdbcType=INTEGER},
             #{procDefId,jdbcType=VARCHAR},
@@ -38,8 +36,7 @@
             #{logicChildId,jdbcType=VARCHAR},
             #{physicsChildId,jdbcType=VARCHAR},
             #{createTime,jdbcType=DATE},
-		    #{isMultiinstance,jdbcType=VARCHAR},
-		    #{isPreemptMode,jdbcType=VARCHAR},
+		    #{isMultiinstance,jdbcType=VARCHAR}
           )
     </insert>
     
@@ -53,21 +50,17 @@
             logic_child_id = #{logicChildId,jdbcType=VARCHAR},
             physics_child_id = #{physicsChildId,jdbcType=VARCHAR},
             create_time = #{createTime,jdbcType=DATE},
-            is_multiinstance = #{isMultiinstance,jdbcType=VARCHAR},
-            is_preempt_mode = #{isPreemptMode,jdbcType=VARCHAR},
+            is_multiinstance = #{isMultiinstance,jdbcType=VARCHAR}
         </set>
         where id = #{id, jdbcType=VARCHAR}
     </update>
     
     <select id="selectProcNodeInfo" parameterType="string" resultMap="procNodeInfoResultMap">
-        select * from act_proc_re_node where id = #{id, jdbcType=INTEGER}
-    </select>
-
-    <select id="selectNodePreemptMode" parameterType="string" resultMap="procNodeInfoResultMap">
-        select * from act_proc_re_node where id = #{id, jdbcType=INTEGER}
+        select * from act_proc_re_node where id = #{id, jdbcType=VARCHAR}
     </select>
     
     <delete id="deleteProcNodeInfo" parameterType="org.flowable.ui.modeler.domain.ProcNodeInfo">
-        delete from act_proc_re_node where id = #{id, jdbcType=INTEGER}
+        delete from act_proc_re_node where id = #{id}
     </delete>
+    
 </mapper>

@@ -33,7 +33,12 @@ import org.flowable.rest.service.api.engine.variable.RestVariable.RestVariableSc
 import org.flowable.variable.service.impl.persistence.entity.VariableInstanceEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,8 +48,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Frederik Heremans
  */
 @RestController
-@RequestMapping("/workflow/api")
-@Api(tags = { "Process Instance Variables" }, description = "流程实例", authorizations = { @Authorization(value = "basicAuth") })
+@Api(tags = { "Process Instance Variables" }, description = "Manage Process Instances", authorizations = { @Authorization(value = "basicAuth") })
 public class ProcessInstanceVariableResource extends BaseExecutionVariableResource {
 
     @Autowired

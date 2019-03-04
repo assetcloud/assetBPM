@@ -21,7 +21,10 @@ import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
 
 import org.flowable.common.rest.api.DataResponse;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -30,8 +33,7 @@ import java.util.Map;
  * @author Frederik Heremans
  */
 @RestController
-@RequestMapping("/workflow/api")
-@Api(tags = { "Executions" }, description = "执行实例", authorizations = { @Authorization(value = "basicAuth") })
+@Api(tags = { "Executions" }, description = "Manage Executions", authorizations = { @Authorization(value = "basicAuth") })
 public class ExecutionQueryResource extends ExecutionBaseResource {
 
     // FIXME Naming issue ?

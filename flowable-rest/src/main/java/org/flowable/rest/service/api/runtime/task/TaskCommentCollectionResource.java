@@ -27,7 +27,11 @@ import org.flowable.rest.service.api.engine.CommentResponse;
 import org.flowable.task.api.Task;
 import org.flowable.task.api.history.HistoricTaskInstance;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,8 +41,7 @@ import java.util.List;
  * @author Frederik Heremans
  */
 @RestController
-@RequestMapping("/workflow/api")
-@Api(tags = { "Task Comments" }, description = "流程任务意见", authorizations = { @Authorization(value = "basicAuth") })
+@Api(tags = { "Task Comments" }, description = "Manage Tasks Comments", authorizations = { @Authorization(value = "basicAuth") })
 public class TaskCommentCollectionResource extends TaskBaseResource {
 
     @ApiOperation(value = "List comments on a task", tags = { "Task Comments" }, nickname = "listTaskComments")

@@ -30,7 +30,12 @@ import org.flowable.rest.service.api.engine.variable.RestVariable.RestVariableSc
 import org.flowable.task.api.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -48,8 +53,7 @@ import io.swagger.annotations.Authorization;
  * @author Frederik Heremans
  */
 @RestController
-@RequestMapping("/workflow/api")
-@Api(tags = { "Task Variables" }, description = "流程任务变量", authorizations = { @Authorization(value = "basicAuth") })
+@Api(tags = { "Task Variables" }, description = "Manage Tasks variables", authorizations = { @Authorization(value = "basicAuth") })
 public class TaskVariableCollectionResource extends TaskVariableBaseResource {
 
     @Autowired

@@ -39,6 +39,7 @@ import static org.junit.Assert.*;
  * @author Frederik Heremans
  */
 public class TaskIdentityLinkResourceTest extends BaseSpringRestTestCase {
+
     /**
      * Test getting all identity links. GET runtime/tasks/{taskId}/identitylinks
      */

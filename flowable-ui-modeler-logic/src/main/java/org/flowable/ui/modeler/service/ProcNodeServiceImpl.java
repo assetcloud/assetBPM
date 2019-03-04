@@ -8,8 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * @author lichao
  */
@@ -20,29 +18,9 @@ public class ProcNodeServiceImpl implements ProcNodeService {
     @Autowired
     ProcNodeRepository procNodeRepository;
 
+
     @Override
     public void save(ProcNodeInfo procNodeInfo) {
         procNodeRepository.save(procNodeInfo);
-    }
-
-    @Override
-    public String queryNodePreemptModeProcDefIdAndActId(String procDefId,String actId) {
-        List<ProcNodeInfo> list = procNodeRepository.findNodePreemptModeProcDefIdAndActId(procDefId,actId);
-        if(list!=null&&list.size()>0) {
-            LOGGER.info("获取当前节点的抢占模式值!");
-            return list.get(0).getIsPreemptMode();
-        }else {
-            return null;
-        }
-    }
-    @Override
-    public String queryNodePreemptModeProcDefKeyAndActId(String procDefKey,String actId) {
-        List<ProcNodeInfo> list = procNodeRepository.findNodePreemptModeProcDefKeyAndActId(procDefKey,actId);
-        if(list!=null&&list.size()>0) {
-            LOGGER.info("获取当前节点的抢占模式值!");
-            return list.get(0).getIsPreemptMode();
-        }else {
-            return null;
-        }
     }
 }

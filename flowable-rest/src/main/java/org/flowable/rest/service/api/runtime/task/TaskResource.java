@@ -25,7 +25,15 @@ import org.flowable.common.engine.api.FlowableIllegalArgumentException;
 import org.flowable.rest.service.api.engine.variable.RestVariable;
 import org.flowable.task.api.Task;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -39,10 +47,8 @@ import io.swagger.annotations.Authorization;
 /**
  * @author Frederik Heremans
  */
-@SuppressWarnings("Duplicates")
 @RestController
-@RequestMapping("/workflow/api")
-@Api(tags = { "Tasks" }, description = "流程任务", authorizations = { @Authorization(value = "basicAuth") })
+@Api(tags = { "Tasks" }, description = "任务管理", authorizations = { @Authorization(value = "basicAuth") })
 public class TaskResource extends TaskBaseResource {
 
     @ApiOperation(value = "Get a task", tags = { "Tasks" })
@@ -162,14 +168,9 @@ public class TaskResource extends TaskBaseResource {
                 if (var.getName() == null) {
                     throw new FlowableIllegalArgumentException("Variable name is required");
                 }
+
                 Object actualVariableValue = restResponseFactory.getVariableValue(var);
                 variablesToSet.put(var.getName(), actualVariableValue);
-            }
-            /**
-             * TODO 添加节点审批人员参数 By-lichao
-             */
-            if(variablesToSet.get("userids")==null) {
-                variablesToSet.put("userids",null);
             }
         }
 
@@ -186,12 +187,6 @@ public class TaskResource extends TaskBaseResource {
         }
 
         taskService.complete(task.getId(), variablesToSet, transientVariablesToSet);
-        /**
-         * TODO 取缓存的节点信息,如果是抢占模式单独处理 By-lichao
-         * TODO 暂时查询数据库
-         */
-
-
     }
 
     protected void resolveTask(Task task, TaskActionRequest actionRequest) {

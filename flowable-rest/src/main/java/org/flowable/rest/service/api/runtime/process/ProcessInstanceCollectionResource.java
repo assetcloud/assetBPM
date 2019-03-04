@@ -31,7 +31,11 @@ import org.flowable.rest.service.api.engine.variable.RestVariable;
 import org.flowable.variable.api.history.HistoricVariableInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -51,8 +55,7 @@ import io.swagger.annotations.Authorization;
  * @author Ryan Johnston (@rjfsu)
  */
 @RestController
-@RequestMapping("/workflow/api")
-@Api(tags = { "Process Instances" }, description = "流程实例", authorizations = { @Authorization(value = "basicAuth") })
+@Api(tags = { "Process Instances" }, description = "Manage Process Instances", authorizations = { @Authorization(value = "basicAuth") })
 public class ProcessInstanceCollectionResource extends BaseProcessInstanceResource {
 
     @Autowired
@@ -234,10 +237,6 @@ public class ProcessInstanceCollectionResource extends BaseProcessInstanceResour
                     throw new FlowableIllegalArgumentException("Variable name is required.");
                 }
                 startVariables.put(variable.getName(), restResponseFactory.getVariableValue(variable));
-            }
-            //TODO 添加节点参数 By-lichao
-            if(startVariables.get("userids")==null) {
-                startVariables.put("userids",null);
             }
         }
 

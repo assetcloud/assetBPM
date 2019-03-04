@@ -21,7 +21,10 @@ import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
 
 import org.flowable.common.rest.api.DataResponse;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -30,8 +33,7 @@ import java.util.Map;
  * @author Frederik Heremans
  */
 @RestController
-@RequestMapping("/workflow/api")
-@Api(tags = { "Tasks" }, description = "流程任务", authorizations = { @Authorization(value = "basicAuth") })
+@Api(tags = { "Tasks" }, description = "Manage Tasks", authorizations = { @Authorization(value = "basicAuth") })
 public class TaskQueryResource extends TaskBaseResource {
 
     @ApiOperation(value = "Query for tasks", nickname="queryTasks", tags = {"Tasks", "Query"},

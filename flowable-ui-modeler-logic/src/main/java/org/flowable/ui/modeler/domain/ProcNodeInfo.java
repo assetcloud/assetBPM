@@ -15,15 +15,14 @@ public class ProcNodeInfo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id;
-    private String  procDefId;
-    private String  actId;
-    private String  actName;
-    private String  actType;
-    private String  logicChildId;
-    private String  physicsChildId;
-    private Date    createTime;
-    private String  isMultiinstance;
-    private String  isPreemptMode;
+    private String procDefId;
+    private String actId;
+    private String actName;
+    private String actType;
+    private String logicChildId;
+    private String physicsChildId;
+    private Date createTime;
+    private String isMultiinstance;
 
     public Integer getId() {
         return id;
@@ -95,13 +94,5 @@ public class ProcNodeInfo implements Serializable {
 
     public void setIsMultiinstance(String isMultiinstance) {
         this.isMultiinstance = isMultiinstance;
-    }
-
-    public String getIsPreemptMode() {
-        return isPreemptMode;
-    }
-
-    public void setIsPreemptMode(String isPreemptMode) {
-        this.isPreemptMode = isPreemptMode;
     }
 }

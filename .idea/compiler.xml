@@ -6,21 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="fbpm-process-center" />
+        <module name="abpm-process-center" />
+        <module name="abpm-process-engine" />
+        <module name="abpm-process-rest" />
         <module name="flowable-rest" />
-        <module name="flowable-rest-ext" />
         <module name="flowable-ui-modeler-logic" />
         <module name="flowable-ui-modeler-rest" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="fbpm-process-center" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="fbpm-process-center" options="-parameters -Xlint:unchecked" />
-      <module name="flowable-rest-ext" options="-parameters -Xlint:unchecked" />
+      <module name="abpm-process-center" options="-parameters" />
+      <module name="abpm-process-engine" options="-parameters" />
+      <module name="abpm-process-rest" options="-parameters" />
     </option>
   </component>
 </project>

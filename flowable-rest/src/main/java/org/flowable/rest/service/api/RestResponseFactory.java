@@ -96,7 +96,6 @@ import org.flowable.variable.api.history.HistoricVariableInstance;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.stereotype.Service;
 
 /**
  * Default implementation of a {@link RestResponseFactory}.

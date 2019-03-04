@@ -27,7 +27,12 @@ import org.flowable.task.api.Task;
 import org.flowable.variable.service.impl.persistence.entity.VariableInstanceEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import io.swagger.annotations.Api;
@@ -43,8 +48,7 @@ import io.swagger.annotations.Authorization;
  * @author Frederik Heremans
  */
 @RestController
-@RequestMapping("/workflow/api")
-@Api(tags = { "Task Variables" }, description = "流程任务", authorizations = { @Authorization(value = "basicAuth") })
+@Api(tags = { "Task Variables" }, description = "Manage Tasks", authorizations = { @Authorization(value = "basicAuth") })
 public class TaskVariableResource extends TaskVariableBaseResource {
 
     @Autowired
