@@ -44,7 +44,6 @@ public class ProcDeploymentResource {
     RepositoryService repositoryService;
 
     @PostMapping(value = "/repository/procdeploy/{modelId}",produces = "application/json")
-    @ResponseBody
     public ProcDeploymentResponse procDeploy(@PathVariable String modelId, HttpServletRequest request, HttpServletResponse response) throws Exception{
         if(StringUtils.isBlank(modelId)) {
             throw new FlowableIllegalArgumentException("流程部署时,modelId不能为空!");
