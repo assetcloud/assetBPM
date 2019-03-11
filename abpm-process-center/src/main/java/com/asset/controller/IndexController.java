@@ -29,12 +29,12 @@ public class IndexController extends BaseController {
         if (obj != null) {
             return "redirect:index";
         }
-        return "/login";
+        return "login";
     }
 
     @RequestMapping(value = "/index")
     public String index() {
-        return "/index.html";
+        return "index.html";
     }
 
     @RequestMapping(value = "/login")
