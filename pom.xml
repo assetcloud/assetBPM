@@ -20,6 +20,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <flowable.version>6.4.0</flowable.version>
+        <!-- 推荐使用Harbor -->
+        <!--<docker.registry.url>assetclouddocker.com</docker.registry.url>-->
+        <docker.registry.url>192.168.1.202</docker.registry.url>
+        <docker.plugin.version>1.2.0</docker.plugin.version>
+        <dockerfile-maven-version>1.4.0</dockerfile-maven-version>
     </properties>
 
     <dependencies>
